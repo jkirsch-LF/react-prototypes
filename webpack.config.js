@@ -32,6 +32,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.NamedModulesPlugin()
+        new webpack.NamedModulesPlugin(),
+        function() {
+            this.plugin('watch-run', function(watching, callback) {
+                console.log('Begin compile at ' + new Date());
+                callback();
+            })
+        }
     ]
 };
